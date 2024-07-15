@@ -26,7 +26,7 @@ Utilizando metodologias ágeis para o desenvolvimento do microsservice, especifi
 
 ## Documentação da API
 
-A documentação da API está disponível através do Swagger na seguinte URL: `https://envio-email.onrender.com/swagger-ui/index.html`
+A documentação da API está disponível através do Swagger na seguinte URL: [SWAGGER](https://envio-email.onrender.com/swagger-ui/index.html)
 
 ## Contribuição
 
