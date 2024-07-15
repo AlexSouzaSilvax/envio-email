@@ -9,6 +9,7 @@
 - **Spring Boot 3**
 - **Swagger 3**
 - **Docker**
+- **Render**
 
 ## Hospedagem
 
