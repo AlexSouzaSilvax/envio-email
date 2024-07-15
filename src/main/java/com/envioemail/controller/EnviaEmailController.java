@@ -5,12 +5,16 @@ import org.springframework.web.bind.annotation.RestController;
 import com.envioemail.dto.EnviaEmailDTO;
 import com.envioemail.service.EnviaEmailService;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.mail.MessagingException;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @RestController
+@RequestMapping("api")
+@Tag(name = "Envio Email", description = "Envio Email")
 public class EnviaEmailController {
 
     private final EnviaEmailService enviaEmailService;
