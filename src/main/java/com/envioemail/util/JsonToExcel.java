@@ -50,7 +50,7 @@ public class JsonToExcel {
             }
         }
 
-        try (FileOutputStream fileOut = new FileOutputStream("./src/main/resources/arquivos/data.xlsx")) {
+        try (FileOutputStream fileOut = new FileOutputStream("data.xlsx")) {
             workbook.write(fileOut);
         }
 

@@ -54,7 +54,7 @@ public class EnviaEmailService {
 
         javaMailSender.send(mensagem);
 
-        this.deleteFile("./src/main/resources/arquivos/data.xlsx");
+        this.deleteFile("data.xlsx");
     }
 
     private void deleteFile(String caminhoFile) {
