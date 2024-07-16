@@ -12,8 +12,6 @@ public class Email {
     private String destinatario;
     private String titulo;
     private String nomeDestinatario;
-    private String mesExtenso;
-    private String ano;
-    private String anexo;
+    private Object anexo;
     private String conteudo;
 }
