@@ -31,7 +31,7 @@ A documentação da API está disponível através do Swagger na seguinte URL: [
 
 ## Para usar serviço
 
-Declarar GMAIL_USERNAME e GMAIL_PASSWORD variavél de ambiente.
+Declarar GMAIL_USERNAME e GMAIL_PASSWORD variável de ambiente.
 
 ## Contribuição
 
