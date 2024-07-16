@@ -2,7 +2,7 @@ package com.envioemail.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 
-import com.envioemail.dto.EnviaEmailDTO;
+import com.envioemail.model.Email;
 import com.envioemail.service.EnviaEmailService;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -24,17 +24,17 @@ public class EnviaEmailController {
     }
 
     @PostMapping("envia-email")
-    public void enviaEmail(@RequestBody EnviaEmailDTO pEnviaEmailDTO) throws MessagingException {
-        pEnviaEmailDTO.getEmail().setConteudo(this.corpoEmail(pEnviaEmailDTO.getEmail().getNomeDestinatario(),
-                pEnviaEmailDTO.getEmail().getMesExtenso(), pEnviaEmailDTO.getEmail().getAno()));
-        enviaEmailService.enviarEmail(pEnviaEmailDTO.getPropriedade(), pEnviaEmailDTO.getEmail());
+    public void enviaEmail(@RequestBody Email pEmail) throws MessagingException {
+        pEmail.setConteudo(this.corpoEmail(pEmail.getNomeDestinatario(),
+                pEmail.getMesExtenso(), pEmail.getAno()));
+        enviaEmailService.enviarEmail(pEmail);
     }
 
     @PostMapping("envia-email-anexo")
-    public void enviaEmailAnexo(@RequestBody EnviaEmailDTO pEnviaEmailDTO) throws MessagingException {
-        pEnviaEmailDTO.getEmail().setConteudo(this.corpoEmail(pEnviaEmailDTO.getEmail().getNomeDestinatario(),
-                pEnviaEmailDTO.getEmail().getMesExtenso(), pEnviaEmailDTO.getEmail().getAno()));
-        enviaEmailService.enviarEmailAnexo(pEnviaEmailDTO.getPropriedade(), pEnviaEmailDTO.getEmail());
+    public void enviaEmailAnexo(@RequestBody Email pEmail) throws MessagingException {
+        pEmail.setConteudo(this.corpoEmail(pEmail.getNomeDestinatario(),
+                pEmail.getMesExtenso(), pEmail.getAno()));
+        enviaEmailService.enviarEmailAnexo(pEmail);
     }
 
     public String corpoEmail(String pNomeDestinario, String pMesExtenso, String pAno) {
