@@ -1,32 +1,22 @@
 package com.envioemail.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
 import com.envioemail.model.Email;
-import com.envioemail.model.Propriedade;
 
 import jakarta.mail.MessagingException;
 
 @Service
 public class EnviaEmailService {
 
-    private PropertyModifier propertyModifier;
+    @Autowired
+    JavaMailSenderImpl javaMailSender;
 
-    public EnviaEmailService(PropertyModifier propertyModifier) {
-        this.propertyModifier = propertyModifier;
-    }
-
-    private JavaMailSenderImpl atualizaPropriedades(String novoUsername, String novaPassword)
-            throws MessagingException {
-        return propertyModifier.atualizaPropriedades(novoUsername, novaPassword);
-    }
-
-    public void enviarEmail(Propriedade propriedade, Email pEmail) throws MessagingException {
-
-        JavaMailSenderImpl javaMailSender = atualizaPropriedades(propriedade.getUsername(), propriedade.getPassword());
+    public void enviarEmail(Email pEmail) throws MessagingException {
 
         var mensagem = javaMailSender.createMimeMessage();
 
@@ -39,9 +29,8 @@ public class EnviaEmailService {
         javaMailSender.send(mensagem);
     }
 
-    public void enviarEmailAnexo(Propriedade propriedade, Email pEmail)
+    public void enviarEmailAnexo(Email pEmail)
             throws MessagingException {
-        JavaMailSenderImpl javaMailSender = atualizaPropriedades(propriedade.getUsername(), propriedade.getPassword());
 
         var mensagem = javaMailSender.createMimeMessage();
 
@@ -56,4 +45,5 @@ public class EnviaEmailService {
 
         javaMailSender.send(mensagem);
     }
+
 }
