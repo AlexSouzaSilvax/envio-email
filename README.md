@@ -29,6 +29,10 @@ Utilizando metodologias ágeis para o desenvolvimento do microsservice, especifi
 
 A documentação da API está disponível através do Swagger na seguinte URL: [SWAGGER](https://envio-email.onrender.com/swagger-ui/index.html)
 
+## Para usar serviço
+
+Declarar GMAIL_USERNAME e GMAIL_PASSWORD variavél de ambiente.
+
 ## Contribuição
 
 Se você deseja contribuir com este projeto, sinta-se à vontade para abrir um pull request ou relatar um problema.
