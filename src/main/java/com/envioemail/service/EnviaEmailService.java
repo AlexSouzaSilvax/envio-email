@@ -48,7 +48,7 @@ public class EnviaEmailService {
         helper.setSubject(pEmail.getTitulo());
         helper.setText(pEmail.getConteudo(), true);
 
-        String nomeAnexo = "relatorio_mensal.xlsx";
+        String nomeAnexo = "backup_mensal.xlsx";
         helper.addAttachment(nomeAnexo, new ClassPathResource(
                 jsonToExcel.convertJsonToExcel(new ObjectMapper().writeValueAsString(pEmail.getAnexo()))));
 
