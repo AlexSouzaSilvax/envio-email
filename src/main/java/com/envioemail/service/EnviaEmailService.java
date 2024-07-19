@@ -48,17 +48,16 @@ public class EnviaEmailService {
         helper.setSubject(pEmail.getTitulo());
         helper.setText(pEmail.getConteudo(), true);
 
-        String nomeAnexo = "backup_mensal.xlsx";
-        helper.addAttachment(nomeAnexo, new ClassPathResource(
+        helper.addAttachment("backup_mensal.xlsx", new ClassPathResource(
                 jsonToExcel.convertJsonToExcel(new ObjectMapper().writeValueAsString(pEmail.getAnexo()))));
 
         javaMailSender.send(mensagem);
 
-        this.deleteFile("./src/main/resources/arquivos/data.xlsx");
+        this.deleteFile("com/envioemail/util/arquivos/backup_mensal.xlsx");
     }
 
-    private void deleteFile(String caminhoFile) {
-        File file = new File(caminhoFile);
+    private void deleteFile(String caminhoArquivo) {
+        File file = new File(getClass().getClassLoader().getResource(caminhoArquivo).getFile());
         if (file.exists()) {
             file.delete();
         }

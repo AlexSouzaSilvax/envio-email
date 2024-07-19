@@ -8,8 +8,10 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.stereotype.Component;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.Iterator;
 import java.util.Map;
 
@@ -50,13 +52,24 @@ public class JsonToExcel {
             }
         }
 
-        try (FileOutputStream fileOut = new FileOutputStream("./src/main/resources/arquivos/data.xlsx")) {
+        String caminhoArquivo = "com/envioemail/util/arquivos/";
+
+        // cria um arquivo vazio
+        File novoArquivo = new File(new File(getClass().getClassLoader().getResource(caminhoArquivo).getFile()),
+                "backup_mensal.xlsx");
+
+        try (OutputStream os = new FileOutputStream(novoArquivo)) {
+            os.write("Conteúdo de teste".getBytes());
+        }
+
+        try (FileOutputStream fileOut = new FileOutputStream(
+                new File(getClass().getClassLoader().getResource(caminhoArquivo + "backup_mensal.xlsx").getFile()))) {
             workbook.write(fileOut);
         }
 
         workbook.close();
 
-        return "\\arquivos\\data.xlsx";
+        return novoArquivo.getAbsolutePath();
     }
 
 }
