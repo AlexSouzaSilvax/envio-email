@@ -2,23 +2,23 @@ package com.envioemail.util;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.stereotype.Component;
 
-import java.io.File;
-import java.io.FileOutputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.util.Iterator;
 import java.util.Map;
 
 @Component
 public class JsonToExcel {
 
-    public String convertJsonToExcel(String jsonString) throws IOException {
+    public ByteArrayResource convertJsonToExcel(String jsonString) throws IOException {
 
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode jsonArray = objectMapper.readTree(jsonString);
@@ -52,24 +52,14 @@ public class JsonToExcel {
             }
         }
 
-        String caminhoArquivo = "com/envioemail/util/arquivos/";
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        workbook.write(bos);
+        byte[] bytes = bos.toByteArray();
 
-        // cria um arquivo vazio
-        File novoArquivo = new File(new File(getClass().getClassLoader().getResource(caminhoArquivo).getFile()),
-                "backup_mensal.xlsx");
-
-        try (OutputStream os = new FileOutputStream(novoArquivo)) {
-            os.write("Conteúdo de teste".getBytes());
-        }
-
-        try (FileOutputStream fileOut = new FileOutputStream(
-                new File(getClass().getClassLoader().getResource(caminhoArquivo + "backup_mensal.xlsx").getFile()))) {
-            workbook.write(fileOut);
-        }
-
+        bos.close();
         workbook.close();
 
-        return novoArquivo.getAbsolutePath();
+        return new ByteArrayResource(bytes);
     }
 
 }
