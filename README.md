@@ -13,7 +13,7 @@
 
 ## Hospedagem
 
-- **MICROSSERVICE**: [Render](https://envio-email.onrender.com/)
+- **MICROSSERVICE**: [Render](https://envio-email-8f9q.onrender.com/)
 
 ## Metodologia de Desenvolvimento
 
@@ -27,7 +27,7 @@ Utilizando metodologias ágeis para o desenvolvimento do microsservice, especifi
 
 ## Documentação da API
 
-A documentação da API está disponível através do Swagger na seguinte URL: [SWAGGER](https://envio-email.onrender.com/swagger-ui/index.html)
+A documentação da API está disponível através do Swagger na seguinte URL: [SWAGGER](https://envio-email-8f9q.onrender.com/swagger-ui/index.html)
 
 ## Para usar serviço
 
